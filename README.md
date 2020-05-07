@@ -1,4 +1,4 @@
-# Serverless TypeOrm Migrations
+# Serverless TypeORM Migrations
 
 Database migrations for AWS Lambda and RDS using [TypeORM Migrations](https://typeorm.io/#/migrations).
 
