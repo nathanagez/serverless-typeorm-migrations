@@ -67,7 +67,7 @@ functions:
       SLS_TYPEORM_MIGRATIONS_ENGINE: "postgres"
       SLS_TYPEORM_MIGRATION_DATABASE_URL: "postgres://root:password@domain.rds.amazonaws.com:5432/database"
       SLS_TYPEORM_MIGRATION_OLDER: "src/migration/**/*.js"
-  up:
+  down:
     handler: migrations.down
     timeout: 30
     environment:
