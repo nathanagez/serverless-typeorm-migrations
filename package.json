@@ -1,6 +1,6 @@
 {
   "name": "serverless-typeorm-migrations",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Serverless typeorm migration plugin",
   "main": "index.js",
   "scripts": {
