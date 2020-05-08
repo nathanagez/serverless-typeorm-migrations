@@ -40,7 +40,7 @@ Define a migration handler somewhere in your project. Example:
 ```js
 // /migrations.js
 
-const { up, down } = require("serverless-typeorm-migrations");
+const { up, down } = require("serverless-typeorm-migrations/build/handlers");
 
 module.exports.up = up;
 
