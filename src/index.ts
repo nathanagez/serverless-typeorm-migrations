@@ -5,9 +5,7 @@ import {
   getMigrationFolder,
   logMigrations,
 } from "./utils";
-import { up, down } from "./handlers";
 
-export { up, down };
 class ServerlessTypeOrmMigration {
   private serverless: any;
   private options: any;
@@ -83,4 +81,4 @@ class ServerlessTypeOrmMigration {
   }
 }
 
-module.exports = ServerlessTypeOrmMigration;
+export = ServerlessTypeOrmMigration;
