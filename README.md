@@ -1,4 +1,4 @@
-[![Serverless Application Framework AWS Lambda API Gateway](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-framework.gif)](http://serverless.com)
+[![Serverless](https://miro.medium.com/max/5274/1*CuALG7dV2rLky1sapJbnUQ.png)](http://serverless.com)
 # Serverless TypeORM Migrations
 
 Database migrations for AWS Lambda and RDS using [TypeORM Migrations](https://typeorm.io/#/migrations).
@@ -50,10 +50,7 @@ module.exports.down = down;
 ```ts
 // /migrations.ts
 
-import {up, down} from 'serverless-typeorm-migrations';
-
-export {up};
-export {down};
+export { up, down } from 'serverless-typeorm-migrations/build/handlers';
 
 ```
 
@@ -132,7 +129,15 @@ module.exports = {
 };
 
 ```
-Don't forget to set `synchronize` to `false` in your TypeORM configuration
+Next you have to transpile .ts migration files to .js to make it work before deploying or invoking functions
 
-
-Next you have to transpile .ts migration files to .js to make it work before deploying or invoking functions related to this plugin and finally, configure the plugin with these [environment variables](#configuration)
+Here is my `package.json` scripts as example
+```json
+{
+"migration:create": "typeorm migration:create -n",
+"migration:generate": "ts-node node_modules/.bin/typeorm migration:generate -n",
+"migration:up": "tsc src/migration/*.ts && serverless migrate up && rm -r src/migration/*.js",
+"migration:down": "tsc src/migration/*.ts && serverless migrate down && rm -r src/migration/*.js"
+}
+```
+And finally, configure the plugin with these [environment variables](#configuration)

@@ -42,6 +42,7 @@ const handler = (handlerName: string) => async (
   }
 };
 
-export const up = handler("runMigration");
+const up = handler("runMigration");
+const down = handler("undoLastMigration");
 
-export const down = handler("undoLastMigration");
+export { up, down };

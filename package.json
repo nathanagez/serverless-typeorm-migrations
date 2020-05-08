@@ -1,6 +1,6 @@
 {
   "name": "serverless-typeorm-migrations",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Serverless typeorm migration plugin",
   "scripts": {
     "build": "tsc",
