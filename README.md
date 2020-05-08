@@ -1,3 +1,4 @@
+[![Serverless Application Framework AWS Lambda API Gateway](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-framework.gif)](http://serverless.com)
 # Serverless TypeORM Migrations
 
 Database migrations for AWS Lambda and RDS using [TypeORM Migrations](https://typeorm.io/#/migrations).
@@ -18,13 +19,19 @@ This plugin supports MySQL / MariaDB / Postgres / CockroachDB / SQLite / Microso
 
 ## Migrations
 
-You need to specify you `migration` folder
+You need to specify your `migration` folder
 
 For details on using migrations please see the [TypeORM Migration](https://typeorm.io/#/migrations) docs.
 
 ## Installation
 
-`serverless-typeorm-migrations` OR `npm install serverless-typeorm-migrations`
+```bash
+$ serverless-typeorm-migrations
+```
+OR 
+```bash
+$ npm install serverless-typeorm-migrations
+```
 
 ## Usage
 

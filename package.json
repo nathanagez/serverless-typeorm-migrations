@@ -1,8 +1,7 @@
 {
   "name": "serverless-typeorm-migrations",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Serverless typeorm migration plugin",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +11,11 @@
   },
   "author": "Nathan AGEZ",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/**/*.d.ts",
+  "prepublish": "tsc",
   "dependencies": {
+    "aws-lambda": "^1.0.6",
     "dotenv": "^8.2.0",
     "mssql": "^6.2.0",
     "mysql": "^2.18.1",
@@ -21,5 +24,9 @@
     "sqlite3": "^4.2.0",
     "typeorm": "^0.2.24"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.51",
+    "@types/node": "^13.13.5",
+    "typescript": "^3.8.3"
+  }
 }
