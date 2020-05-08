@@ -26,7 +26,7 @@ For details on using migrations please see the [TypeORM Migration](https://typeo
 ## Installation
 
 ```bash
-$ serverless-typeorm-migrations
+$ yarn add serverless-typeorm-migrations
 ```
 OR 
 ```bash
