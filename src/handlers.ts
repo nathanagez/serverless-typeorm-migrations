@@ -1,4 +1,3 @@
-//const Migration = require("./migration");
 import Migration from "./migration";
 import { Context, Callback } from "aws-lambda";
 
