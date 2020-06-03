@@ -2,7 +2,7 @@ import { Migration } from "typeorm";
 
 export function getDatabaseConnectionString(logger: (message: string) => void) {
   if (!process.env.SLS_TYPEORM_MIGRATIONS_DATABASE_URL) {
-    logger("SLS_TYPEORM_MIGRATION_DATABASE_URL environment variable required");
+    logger("SLS_TYPEORM_MIGRATIONS_DATABASE_URL environment variable required");
     process.exit(1);
   }
 
@@ -11,7 +11,7 @@ export function getDatabaseConnectionString(logger: (message: string) => void) {
 
 export function getEngine(logger: (message: string) => void): any {
   if (!process.env.SLS_TYPEORM_MIGRATIONS_ENGINE) {
-    logger("SLS_TYPEORM_MIGRATION_DATABASE_URL environment variable required");
+    logger("SLS_TYPEORM_MIGRATIONS_DATABASE_URL environment variable required");
     process.exit(1);
   }
   return process.env.SLS_TYPEORM_MIGRATIONS_ENGINE;
@@ -19,7 +19,7 @@ export function getEngine(logger: (message: string) => void): any {
 
 export function getMigrationFolder(logger: (message: string) => void) {
   if (!process.env.SLS_TYPEORM_MIGRATIONS_FOLDER) {
-    logger("SLS_TYPEORM_MIGRATION_FOLDER environment variable required");
+    logger("SLS_TYPEORM_MIGRATIONS_FOLDER environment variable required");
     process.exit(1);
   }
 

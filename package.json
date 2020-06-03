@@ -29,6 +29,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.51",
     "@types/node": "^13.13.5",
+    "@types/readable-stream": "2.3.5",
     "typescript": "^3.8.3"
   }
 }
