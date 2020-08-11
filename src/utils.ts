@@ -11,7 +11,7 @@ export function getDatabaseConnectionString(logger: (message: string) => void) {
 
 export function getEngine(logger: (message: string) => void): any {
   if (!process.env.SLS_TYPEORM_MIGRATIONS_ENGINE) {
-    logger("SLS_TYPEORM_MIGRATIONS_DATABASE_URL environment variable required");
+    logger("SLS_TYPEORM_MIGRATIONS_ENGINE environment variable required");
     process.exit(1);
   }
   return process.env.SLS_TYPEORM_MIGRATIONS_ENGINE;
