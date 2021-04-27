@@ -70,14 +70,14 @@ functions:
     environment:
       SLS_TYPEORM_MIGRATIONS_ENGINE: "postgres"
       SLS_TYPEORM_MIGRATIONS_DATABASE_URL: "postgres://root:password@domain.rds.amazonaws.com:5432/database"
-      SLS_TYPEORM_MIGRATION_FOLDER: "src/migration/**/*.js"
+      SLS_TYPEORM_MIGRATIONS_FOLDER: "src/migration/**/*.js"
   down:
     handler: migrations.down
     timeout: 30
     environment:
       SLS_TYPEORM_MIGRATIONS_ENGINE: "postgres"
       SLS_TYPEORM_MIGRATIONS_DATABASE_URL: "postgres://root:password@domain.rds.amazonaws.com:5432/database"
-      SLS_TYPEORM_MIGRATION_FOLDER: "src/migration/**/*.js"
+      SLS_TYPEORM_MIGRATIONS_FOLDER: "src/migration/**/*.js"
 ```
 
 Pass the function to the serverless deploy command to have it execute after the deploy is finished:
