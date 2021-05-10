@@ -1,8 +1,6 @@
 import Migration from "./migration";
 import {
-  getEngine,
-  getDatabaseConnectionString,
-  getMigrationFolder,
+  getConnectionOptions,
   logMigrations,
 } from "./utils";
 
@@ -60,22 +58,14 @@ class ServerlessTypeOrmMigration {
 
   async migrate() {
     this.log("Looking for migrations");
-    const migration = new Migration({
-      type: getEngine(this.log),
-      url: getDatabaseConnectionString(this.log),
-      migrations: [getMigrationFolder(this.log)],
-    });
+    const migration = new Migration(getConnectionOptions(this.log));
     const migrations = await migration.runMigration();
     logMigrations(this.log, migrations);
   }
 
   async rollback() {
     this.log("Undoing last migration");
-    const migration = new Migration({
-      type: getEngine(this.log),
-      url: getDatabaseConnectionString(this.log),
-      migrations: [getMigrationFolder(this.log)],
-    });
+    const migration = new Migration(getConnectionOptions(this.log));
     await migration.undoLastMigration();
     this.log("Done.");
   }
