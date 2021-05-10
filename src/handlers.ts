@@ -1,25 +1,11 @@
 import Migration from "./migration";
 import { Context, Callback } from "aws-lambda";
+import { getConnectionOptions } from "./utils";
 
 const success = (response: any) => ({
   statusCode: 200,
   body: JSON.stringify(response),
 });
-
-const getEngine = (): any => {
-  if (!process.env.SLS_TYPEORM_MIGRATIONS_ENGINE) {
-    process.exit(1);
-  }
-  return process.env.SLS_TYPEORM_MIGRATIONS_ENGINE;
-};
-
-const getMigrationFolder = () => {
-  if (!process.env.SLS_TYPEORM_MIGRATIONS_FOLDER) {
-    process.exit(1);
-  }
-
-  return process.env.SLS_TYPEORM_MIGRATIONS_FOLDER;
-};
 
 const handler = (handlerName: string) => async (
   event: any,
@@ -28,11 +14,7 @@ const handler = (handlerName: string) => async (
 ) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  const migration: Migration = new Migration({
-    type: getEngine(),
-    url: process.env.SLS_TYPEORM_MIGRATIONS_DATABASE_URL,
-    migrations: [getMigrationFolder()],
-  });
+  const migration = new Migration(getConnectionOptions(console.error));
 
   try {
     const response = await migration[handlerName]();
