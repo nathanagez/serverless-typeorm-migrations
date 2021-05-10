@@ -69,15 +69,21 @@ functions:
     timeout: 30
     environment:
       SLS_TYPEORM_MIGRATIONS_ENGINE: "postgres"
-      SLS_TYPEORM_MIGRATIONS_DATABASE_URL: "postgres://root:password@domain.rds.amazonaws.com:5432/database"
       SLS_TYPEORM_MIGRATIONS_FOLDER: "src/migration/**/*.js"
+      # using url parameter
+      SLS_TYPEORM_MIGRATIONS_DATABASE_URL: "postgres://root:password@domain.rds.amazonaws.com:5432/database"
   down:
     handler: migrations.down
     timeout: 30
     environment:
       SLS_TYPEORM_MIGRATIONS_ENGINE: "postgres"
-      SLS_TYPEORM_MIGRATIONS_DATABASE_URL: "postgres://root:password@domain.rds.amazonaws.com:5432/database"
       SLS_TYPEORM_MIGRATIONS_FOLDER: "src/migration/**/*.js"
+      # using host, port, db name, username and password
+      SLS_TYPEORM_MIGRATIONS_DATABASE_HOST: "domain.rds.amazonaws.com"
+      SLS_TYPEORM_MIGRATIONS_DATABASE_PORT: "5432"
+      SLS_TYPEORM_MIGRATIONS_DATABASE_NAME: "database"
+      SLS_TYPEORM_MIGRATIONS_DATABASE_USERNAME: "root"
+      SLS_TYPEORM_MIGRATIONS_DATABASE_PASSWORD: "cGFzc3dvcmQ=" # base64 of 'password'
 ```
 
 Pass the function to the serverless deploy command to have it execute after the deploy is finished:
@@ -102,9 +108,17 @@ sls migrate down
 ## Configuration
 
 The functions need to have the following environment variables :
-- `SLS_TYPEORM_MIGRATIONS_DATABASE_URL` set to a valid [connection uri](https://typeorm.io/#/connection/creating-a-new-connection).
 - `SLS_TYPEORM_MIGRATIONS_FOLDER` pointing migrations folder
 - `SLS_TYPEORM_MIGRATIONS_ENGINE` defining database driver
+- `SLS_TYPEORM_MIGRATIONS_DATABASE_URL` set to a valid [connection uri](https://typeorm.io/#/connection/creating-a-new-connection).
+- `SLS_TYPEORM_MIGRATIONS_DATABASE_HOST` set to a valid [host address](https://typeorm.io/#/connection/creating-a-new-connection).
+- `SLS_TYPEORM_MIGRATIONS_DATABASE_PORT` set to a valid [port number](https://typeorm.io/#/connection/creating-a-new-connection).
+- `SLS_TYPEORM_MIGRATIONS_DATABASE_NAME` set to a valid [database name](https://typeorm.io/#/connection/creating-a-new-connection).
+- `SLS_TYPEORM_MIGRATIONS_DATABASE_USERNAME` set to a valid [username](https://typeorm.io/#/connection/creating-a-new-connection).
+- `SLS_TYPEORM_MIGRATIONS_DATABASE_PASSWORD` set to a valid Base64 encoded [password](https://typeorm.io/#/connection/creating-a-new-connection).
+
+You need to define variable URL or host, port, db name, username and password.
+Pay attention that `SLS_TYPEORM_MIGRATIONS_DATABASE_PASSWORD` is base64 encoded!
 
 ## NestJS example
 
