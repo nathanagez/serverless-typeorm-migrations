@@ -17,19 +17,39 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
-    "aws-lambda": "^1.0.6",
-    "dotenv": "^8.2.0",
-    "mssql": "^6.2.0",
-    "mysql": "^2.18.1",
-    "pg": "^8.0.3",
-    "sql.js": "^1.2.2",
-    "sqlite3": "^4.2.0",
     "typeorm": "^0.2.24"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.51",
     "@types/node": "^13.13.5",
-    "@types/readable-stream": "2.3.5",
     "typescript": "^3.8.3"
+  },
+  "peerDependencies" : {
+    "mssql": "*",
+    "mysql": "*",
+    "mysql2": "*",
+    "pg": "*",
+    "sql.js": "*",
+    "sqlite3": "*"
+  },
+  "peerDependenciesMeta": {
+    "mssql": {
+      "optional": true
+    },
+    "mysql": {
+      "optional": true
+    },
+    "mysql2": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    },
+    "sql.js": {
+      "optional": true
+    },
+    "sqlite3": {
+      "optional": true
+    }
   }
 }
